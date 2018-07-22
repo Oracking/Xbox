@@ -55,7 +55,7 @@ class Joystick:
             readable, writeable, exception = select.select([self.pipe],[],[],0)
             if readable:
                 response = self.pipe.readline()
-                # Python 3 returns response in bytes. We need to convert to str
+                # Convert from bytes to str for python3
                 if isinstance(response, bytes):
                     response = response.decode('utf-8')
                 # Hard fail if we see this, so force an error
